@@ -20,7 +20,8 @@ const Button = styled.button<ButtonProps>`
   font-weight: ${font.weights.semiBold};
   outline: none;
   border: 1px solid ${({ theme }) => theme.colors.layout.border};
-  box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
+  box-shadow: ${(props) =>
+    `${props.theme.colors.layout.boxShadowBtn} ${props.theme.sizing.boxShadow}`};
   cursor: pointer;
   width: ${(props) => (props.width ? `${props.width}px` : "auto")};
 

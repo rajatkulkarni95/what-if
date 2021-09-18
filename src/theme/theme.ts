@@ -27,6 +27,7 @@ const sizing = {
   six: "24px",
   seven: "36px",
   eight: "48px",
+  boxShadow: "0px 4px 24px",
 };
 
 export const dark: DefaultTheme = {
@@ -45,6 +46,8 @@ export const dark: DefaultTheme = {
       foreground: "#1B2329",
       border: "#1E788A", //"#353F4C",
       accent: "#7A8C99",
+      boxShadowBtn: "rgba(23, 92, 230, 0.15)",
+      boxShadowInput: "rgba(66, 148, 110, 0.15)",
     },
   },
 };

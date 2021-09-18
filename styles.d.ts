@@ -11,6 +11,7 @@ declare module "styled-components" {
       six: string;
       seven: string;
       eight: string;
+      boxShadow: string;
     };
     colors: {
       text: {
@@ -26,6 +27,8 @@ declare module "styled-components" {
         foreground: string;
         border: string;
         accent: string;
+        boxShadowBtn: string;
+        boxShadowInput: string;
       };
     };
   }
