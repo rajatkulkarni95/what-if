@@ -36,14 +36,14 @@ export const dark: DefaultTheme = {
     text: {
       default: "#FFFFFF",
       secondary: "#7A8C99",
-      active: "#064150",
+      active: "#07303B",
       negative: "#FF4040",
       highlight: "#FF9F1C",
       disabled: "#353F4C",
     },
     layout: {
       background: "#0A1014",
-      foreground: "#1B2329",
+      foreground: "#0E1519",
       border: "#1E788A", //"#353F4C",
       accent: "#7A8C99",
       boxShadowBtn: "rgba(23, 92, 230, 0.15)",

@@ -5,11 +5,6 @@ interface InputProps {
   type: string;
 }
 
-interface ContainerProps {
-  margin?: number;
-  width?: number;
-}
-
 export const Input = styled.input<InputProps>`
   border: none;
   font-weight: ${font.weights.regular};
@@ -33,23 +28,4 @@ export const Input = styled.input<InputProps>`
       }
       -moz-appearance: textfield;
     `}
-`;
-
-export const InputContainer = styled.div<ContainerProps>`
-  border: 2px solid;
-  border-color: transparent;
-  background: ${(props) => props.theme.colors.layout.foreground};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: ${(props) => props.margin}px;
-  width: ${(props) => (props.width ? `${props.width}px` : "275px")};
-  padding: ${(props) => props.theme.sizing.three};
-  border-radius: ${({ theme }) => theme.sizing.one};
-  box-shadow: ${(props) =>
-    `${props.theme.colors.layout.boxShadowInput} ${props.theme.sizing.boxShadow}`};
-
-  :focus-within {
-    border: 2px solid ${(props) => props.theme.colors.layout.border};
-  }
 `;
