@@ -5,7 +5,7 @@ interface InputProps {
   type: string;
 }
 
-export const Input = styled.input<InputProps>`
+export const NumberedInput = styled.input<InputProps>`
   border: none;
   font-weight: ${font.weights.regular};
   font-size: ${font.sizes.md};
@@ -15,7 +15,7 @@ export const Input = styled.input<InputProps>`
   letter-spacing: 0.5px;
   font-family: ${font.face};
   margin: 0 ${(props) => props.theme.sizing.three};
-  width: 200px;
+  width: 150px;
 
   // remove the number increment/decrement buttons
   ${(props) =>

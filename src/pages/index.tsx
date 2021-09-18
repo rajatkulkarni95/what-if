@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
 const Wrapper = styled.main`
   margin: 0 auto;
-  width: 70%;
+  width: 75%;
 `;
 
 export default Home;

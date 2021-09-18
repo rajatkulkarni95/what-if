@@ -11,11 +11,10 @@ export const InputContainer = styled.div<ContainerProps>`
   border-color: transparent;
   background: ${(props) => props.theme.colors.layout.background};
   display: flex;
-  justify-content: center;
   align-items: center;
   margin-top: ${(props) => props.marginY}px;
   margin-bottom: ${(props) => props.marginY}px;
-  width: ${(props) => (props.width ? `${props.width}px` : "275px")};
+  width: ${(props) => (props.width ? `${props.width}px` : "220px")};
   padding: ${(props) => props.theme.sizing.three};
   border-radius: ${({ theme }) => theme.sizing.one};
   box-shadow: ${(props) =>

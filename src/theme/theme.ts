@@ -36,7 +36,7 @@ export const dark: DefaultTheme = {
     text: {
       default: "#FFFFFF",
       secondary: "#7A8C99",
-      active: "#07303B",
+      active: "#0d3868",
       negative: "#FF4040",
       highlight: "#FF9F1C",
       disabled: "#353F4C",
@@ -44,7 +44,7 @@ export const dark: DefaultTheme = {
     layout: {
       background: "#0A1014",
       foreground: "#0E1519",
-      border: "#1E788A", //"#353F4C",
+      border: "#0854A5", //"#353F4C",
       accent: "#7A8C99",
       boxShadowBtn: "rgba(23, 92, 230, 0.15)",
       boxShadowInput: "rgba(66, 148, 110, 0.15)",
