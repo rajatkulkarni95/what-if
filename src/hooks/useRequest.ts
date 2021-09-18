@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { constants } from "../constants";
+import { urls } from "../constants";
 import fetcher from "../utils/fetcher";
 
 export const useRequest = (path: string) => {
@@ -7,7 +7,7 @@ export const useRequest = (path: string) => {
     throw new Error("path is required");
   }
 
-  const url = `${constants.basePath}/${path}`;
+  const url = `${urls.basePath}/${path}`;
   let { data, error } = useSWR(url, fetcher);
 
   return { data, error };
