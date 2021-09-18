@@ -37,11 +37,13 @@ declare module "styled-components" {
       sm: string;
       md: string;
       lg: string;
+      xl: string;
       xxl: string;
     };
     weights: {
       regular: number;
       medium: number;
+      semiBold: number;
       bold: number;
     };
   }
