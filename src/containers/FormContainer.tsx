@@ -1,43 +1,43 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Input } from "../components/Input";
+import { NumberedInput } from "../components/Input";
 
-import { AiFillDollarCircle as DollarSign } from "react-icons/ai";
+import { AiFillDollarCircle as DollarSign, AiFillCar } from "react-icons/ai";
 import { Label } from "../components/Label";
 import { InputContainer } from "../components/InputContainer";
+import Select from "../components/Select";
+import { PrimaryButton } from "../components/Button";
 
 const FormContainer: React.FC = () => {
   const [number, setNumber] = useState<number>(25000);
+  const [stock, setStock] = useState<string>("AAPL");
   const handleNumberChange = (event: { target: { value: number } }) => {
     const { value } = event.target;
     setNumber(value);
   };
-  return (
-    <FlexColumn>
-      <InputWrapper>
-        <Label>How much did you spend?</Label>
-        <InputContainer marginY={8}>
-          <DollarSign fontSize="24px" />
-          <Input
-            type="number"
-            value={number}
-            onChange={handleNumberChange}
-            min={1}
-            max={1000000}
-          />
-        </InputContainer>
-      </InputWrapper>
-    </FlexColumn>
-  );
+
+  const handleSelectChange = (event: { target: { value: string } }) => {
+    const { value } = event.target;
+    setStock(value);
+  };
+
+  const items = [
+    { id: 1, icon: <AiFillCar />, label: "BTC" },
+    { id: 2, icon: <AiFillCar />, label: "AAPL" },
+    { id: 3, icon: <AiFillCar />, label: "ETH" },
+    { id: 4, icon: <AiFillCar />, label: "TSLA" },
+  ];
+
+  return <Wrapper></Wrapper>;
 };
 
-const FlexColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const InputWrapper = styled.div`
-  margin: 24px;
+const Wrapper = styled.div`
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  background: #ffffff;
+  padding: 8px 16px;
+  height: 96px;
 `;
 
 export default FormContainer;

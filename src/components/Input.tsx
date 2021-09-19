@@ -3,6 +3,12 @@ import { font } from "../theme/theme";
 
 interface InputProps {
   type: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement> &
+    ((event: {
+      target: {
+        value: number;
+      };
+    }) => any);
 }
 
 export const NumberedInput = styled.input<InputProps>`
