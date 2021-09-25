@@ -1,19 +1,19 @@
 import React, { ReactNode } from "react";
+import { entity } from "../types/entity";
 
 interface SelectedOptionProps {
-  icon: ReactNode;
-  optionText: string;
+  selectedOption: entity;
 }
 
 export const SelectedOption: React.FC<SelectedOptionProps> = ({
-  icon,
-  optionText,
+  selectedOption,
 }) => {
+  const { icon, label } = selectedOption;
   return (
     <React.Fragment>
       <span className="flex items-center">
         {icon}
-        <span className="ml-3 block truncate">{optionText}</span>
+        <span className="ml-3 block truncate">{label}</span>
       </span>
       <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
         <svg

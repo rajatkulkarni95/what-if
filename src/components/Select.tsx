@@ -1,8 +1,9 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, SyntheticEvent, useState } from "react";
 import { SelectedOption } from "./SelectedOption";
 import { FaEthereum as EthereumIcon } from "react-icons/fa";
 import { Option } from "./Option";
 import { entity } from "../types/entity";
+import { entities } from "../constants/entities";
 
 interface SelectProps {
   showOptions: boolean;
@@ -17,8 +18,18 @@ const Select: React.FC<SelectProps> = ({
   labelText,
   handleShowingOptions,
 }) => {
-  const handleOptionClick = (e) => {
-    console.log(e.target);
+  const [selectedOption, setSelectedOption] = useState<entity>(entities[0]);
+
+  const handleOptionClick = (e: SyntheticEvent) => {
+    const { textContent } = e.target as HTMLLIElement;
+    const clickedOption = optionsList.find(
+      (option) => option.label === textContent
+    );
+
+    // To clear the issue of an undefined value being passed to useState
+    // FIXME: Figure out how to ensure via types that the end result on Array.find in this case is a sure value rather than
+    // undefined
+    if (clickedOption) setSelectedOption(clickedOption);
   };
 
   return (
@@ -38,7 +49,7 @@ const Select: React.FC<SelectProps> = ({
           aria-labelledby="listbox-label"
           onClick={handleShowingOptions}
         >
-          <SelectedOption optionText="Ethereum" icon={<EthereumIcon />} />
+          <SelectedOption selectedOption={selectedOption} />
         </button>
 
         {showOptions && (
