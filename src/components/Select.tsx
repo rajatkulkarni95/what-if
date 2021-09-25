@@ -1,4 +1,4 @@
-import { MouseEventHandler, SyntheticEvent, useState } from "react";
+import { MouseEventHandler, Ref, SyntheticEvent, useState } from "react";
 import { SelectedOption } from "./SelectedOption";
 import { FaEthereum as EthereumIcon } from "react-icons/fa";
 import { Option } from "./Option";
@@ -10,6 +10,8 @@ interface SelectProps {
   optionsList: entity[];
   labelText: string;
   handleShowingOptions: MouseEventHandler<HTMLButtonElement>;
+  closeOptionsMenu: Function;
+  selectRef: Ref<HTMLUListElement>;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -17,6 +19,8 @@ const Select: React.FC<SelectProps> = ({
   optionsList,
   labelText,
   handleShowingOptions,
+  closeOptionsMenu,
+  selectRef,
 }) => {
   const [selectedOption, setSelectedOption] = useState<entity>(entities[0]);
 
@@ -30,10 +34,11 @@ const Select: React.FC<SelectProps> = ({
     // FIXME: Figure out how to ensure via types that the end result on Array.find in this case is a sure value rather than
     // undefined
     if (clickedOption) setSelectedOption(clickedOption);
+    closeOptionsMenu();
   };
 
   return (
-    <div>
+    <div className="mx-4">
       <label
         id="listbox-label"
         className="block text-sm font-semibold text-gray-700"
@@ -59,6 +64,7 @@ const Select: React.FC<SelectProps> = ({
             role="listbox"
             aria-labelledby="listbox-label"
             aria-activedescendant="listbox-option-3"
+            ref={selectRef}
           >
             {optionsList?.map((option) => (
               <Option
