@@ -17,7 +17,7 @@ const NumberedInput: React.FC<InputProps> = ({
   onValueChange,
 }) => {
   return (
-    <React.Fragment>
+    <div className="flex flex-col mr-4">
       <label
         htmlFor="spendValue"
         className="block text-sm font-semibold text-gray-700"
@@ -41,7 +41,7 @@ const NumberedInput: React.FC<InputProps> = ({
           max={1000000}
         />
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
