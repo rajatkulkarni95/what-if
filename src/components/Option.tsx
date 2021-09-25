@@ -1,15 +1,18 @@
 import React, { MouseEventHandler, ReactNode } from "react";
+import { Checkmark } from "./Checkmark";
 
 interface OptionProps {
   icon: ReactNode;
   optionText: string;
   onClickOption: MouseEventHandler<HTMLLIElement>;
+  isSelected: boolean;
 }
 
 export const Option: React.FC<OptionProps> = ({
   icon,
   optionText,
   onClickOption,
+  isSelected,
 }) => {
   return (
     <li
@@ -22,6 +25,9 @@ export const Option: React.FC<OptionProps> = ({
         {icon}
         <span className="font-normal ml-3 block truncate">{optionText}</span>
       </div>
+
+      {/* Show a checkmark against the option that is selected */}
+      {isSelected && <Checkmark />}
     </li>
   );
 };

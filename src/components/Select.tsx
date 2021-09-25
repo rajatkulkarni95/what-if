@@ -65,6 +65,7 @@ const Select: React.FC<SelectProps> = ({
                 icon={option.icon}
                 optionText={option.label}
                 onClickOption={handleOptionClick}
+                isSelected={option.label === selectedOption.label}
               />
             ))}
           </ul>
