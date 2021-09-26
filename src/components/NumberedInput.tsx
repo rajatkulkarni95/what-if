@@ -34,7 +34,6 @@ const NumberedInput: React.FC<InputProps> = ({
           name="spendValue"
           id="spendValue"
           className="focus:ring-yellow-500 focus:border-yellow-500 block w-full pl-7 pr-4 py-3 sm:text-sm border-gray-300 rounded-md"
-          placeholder="0.00"
           value={value}
           onChange={onValueChange}
           min={1}

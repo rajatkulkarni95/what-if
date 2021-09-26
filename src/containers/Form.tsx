@@ -1,12 +1,17 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { SyntheticEvent, useCallback, useRef, useState } from "react";
 import { Button } from "../components/Button";
 import NumberedInput from "../components/NumberedInput";
 import Select from "../components/Select";
 import { entities } from "../constants/entities";
 import { useOnClickOutside } from "../hooks/useOutsideClick";
+import { FormObject } from "../types/form";
 
 const Form: React.FC = () => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
+  const [formOptions, setFormOptions] = useState<FormObject>({
+    spentValue: 1000,
+    spentOn: entities[0],
+  });
 
   const handleShowingOptions = () => {
     setShowOptions(true);
@@ -26,21 +31,42 @@ const Form: React.FC = () => {
     }, [])
   );
 
+  const handleNumberChange = (e: EventTarget) => {
+    const { value } = e.target;
+
+    setFormOptions({ ...formOptions, spentValue: value });
+  };
+
+  const handleOptionClick = (e: SyntheticEvent) => {
+    const { textContent } = e.target as HTMLLIElement;
+    const clickedOption = entities.find(
+      (entity) => entity.label === textContent
+    );
+
+    // To clear the issue of an undefined value being passed to useState
+    // FIXME: Figure out how to ensure via types that the end result on Array.find in this case is a sure value rather than
+    // undefined
+    if (clickedOption)
+      setFormOptions({ ...formOptions, spentOn: clickedOption });
+    closeOptionsMenu();
+  };
+
   return (
     <form className="bg-gray-200 p-8 rounded-lg w-3/5 mx-auto my-5 h-auto flex flex-col items-center">
       <section className="flex items-center">
         <NumberedInput
           labelText="How much did you spend"
-          value={2000}
-          onValueChange={(e) => {}}
+          value={formOptions.spentValue}
+          onValueChange={handleNumberChange}
         />
         <Select
           labelText="Instead, could’ve bought"
           showOptions={showOptions}
           handleShowingOptions={handleShowingOptions}
-          closeOptionsMenu={closeOptionsMenu}
+          handleOptionClick={handleOptionClick}
           optionsList={entities}
           selectRef={selectRef}
+          selectedOption={formOptions.spentOn}
         />
       </section>
       <Button
