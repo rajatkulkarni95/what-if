@@ -1,6 +1,5 @@
 import { MouseEventHandler, Ref, SyntheticEvent, useState } from "react";
 import { SelectedOption } from "./SelectedOption";
-import { FaEthereum as EthereumIcon } from "react-icons/fa";
 import { Option } from "./Option";
 import { entity } from "../types/entity";
 import { entities } from "../constants/entities";

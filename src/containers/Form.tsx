@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { Button } from "../components/Button";
 import NumberedInput from "../components/NumberedInput";
 import Select from "../components/Select";
 import { entities } from "../constants/entities";
+import { useOnClickOutside } from "../hooks/useOutsideClick";
 
 const Form: React.FC = () => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
@@ -17,6 +18,13 @@ const Form: React.FC = () => {
 
   // To detect outside clicks and close the menu
   const selectRef = useRef<HTMLUListElement>(null);
+
+  useOnClickOutside(
+    selectRef,
+    useCallback(() => {
+      setShowOptions(false);
+    }, [])
+  );
 
   return (
     <form className="bg-gray-200 p-8 rounded-lg w-3/5 mx-auto my-5 h-auto flex flex-col items-center">
