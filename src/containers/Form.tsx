@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useCallback, useRef, useState } from "react";
 import { Button } from "../components/Button";
 import { MinimalResult } from "../components/MinimalResult";
+import { MonthPicker } from "../components/MonthPicker";
 import NumberedInput from "../components/NumberedInput";
 import Select from "../components/Select";
 import { entities } from "../constants/entities";
@@ -70,6 +71,7 @@ const Form: React.FC<FormProps> = ({
           value={formOptions.spentValue}
           onValueChange={handleNumberChange}
         />
+        <MonthPicker labelText="When was this?" />
         <Select
           labelText="Instead, could’ve bought"
           showOptions={showOptions}
