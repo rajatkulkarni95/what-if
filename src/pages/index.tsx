@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Title } from "../components/Title";
+import Container from "../containers";
 import Form from "../containers/Form";
 
 const Home: NextPage = () => {
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Title />
-      <Form />
+      <Container />
     </div>
   );
 };

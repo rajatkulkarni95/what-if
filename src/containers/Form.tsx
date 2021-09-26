@@ -1,17 +1,25 @@
 import React, { SyntheticEvent, useCallback, useRef, useState } from "react";
 import { Button } from "../components/Button";
+import { MinimalResult } from "../components/MinimalResult";
 import NumberedInput from "../components/NumberedInput";
 import Select from "../components/Select";
 import { entities } from "../constants/entities";
 import { useOnClickOutside } from "../hooks/useOutsideClick";
+import { useRequest } from "../hooks/useRequest";
 import { FormObject } from "../types/form";
 
-const Form: React.FC = () => {
+interface FormProps {
+  showResults: Function;
+  formOptions: FormObject;
+  handleFormChange: Function;
+}
+
+const Form: React.FC<FormProps> = ({
+  showResults,
+  formOptions,
+  handleFormChange,
+}) => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
-  const [formOptions, setFormOptions] = useState<FormObject>({
-    spentValue: 1000,
-    spentOn: entities[0],
-  });
 
   const handleShowingOptions = () => {
     setShowOptions(true);
@@ -34,7 +42,7 @@ const Form: React.FC = () => {
   const handleNumberChange = (e: EventTarget) => {
     const { value } = e.target;
 
-    setFormOptions({ ...formOptions, spentValue: value });
+    handleFormChange({ spentValue: value });
   };
 
   const handleOptionClick = (e: SyntheticEvent) => {
@@ -46,9 +54,12 @@ const Form: React.FC = () => {
     // To clear the issue of an undefined value being passed to useState
     // FIXME: Figure out how to ensure via types that the end result on Array.find in this case is a sure value rather than
     // undefined
-    if (clickedOption)
-      setFormOptions({ ...formOptions, spentOn: clickedOption });
+    if (clickedOption) handleFormChange({ spentOn: clickedOption });
     closeOptionsMenu();
+  };
+
+  const onClickCalculate = () => {
+    showResults();
   };
 
   return (
@@ -69,11 +80,7 @@ const Form: React.FC = () => {
           selectedOption={formOptions.spentOn}
         />
       </section>
-      <Button
-        label="Calculate"
-        type="button"
-        onClick={() => console.log("hello")}
-      />
+      <Button label="Calculate" type="button" onClick={onClickCalculate} />
     </form>
   );
 };
